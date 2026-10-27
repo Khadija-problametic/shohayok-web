@@ -1,0 +1,329 @@
+/* ============ Shohayok — ডিজাইন সিস্টেম ============ */
+:root{
+  --coral:#FF7A59; --coral2:#FF946F; --teal:#26998a; --gold:#dfb657; --rose:#da747e; --blue:#4980c7;
+  --bg:#1A2236; --surf:#222C45; --surf2:#2B3756; --ink:#EDF1F9; --mute:#CBD5E1;
+  --line:rgba(255,255,255,.16); --glass:rgba(255,255,255,.05);
+  --shadow:0 18px 44px -22px rgba(0,0,0,.5);
+  --r-sm:12px; --r-md:18px; --r-lg:24px;
+}
+[data-theme=light]{
+  --bg:#F4F6FB; --surf:#FFFFFF; --surf2:#EDF1F8; --ink:#17233F; --mute:#4B5563;
+  --line:rgba(23,35,63,.16); --glass:rgba(23,35,63,.04);
+  --shadow:0 18px 40px -24px rgba(23,35,63,.28);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:19px/1.65 'Hind Siliguri',sans-serif;overflow-x:hidden;transition:background .3s,color .3s}
+h1,h2,h3{font-family:'Bricolage Grotesque','Hind Siliguri',sans-serif;line-height:1.2;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1140px;margin:auto;padding:0 22px}
+.wrap.narrow{max-width:600px}
+.mute{color:var(--mute)}
+.small{font-size:15px}
+.view{display:none}.view.on{display:block;animation:up .35s both}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.aurora{display:none}
+
+/* Call Button ar Simple UI */
+.btn-call{background:#10B981!important;color:#fff!important;font-size:18px!important;padding:10px 20px!important;display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:999px;font-weight:700}
+.btn-call:hover{filter:brightness(1.08)}
+.elder-task-box{background:var(--surf);border:2px solid var(--coral);border-radius:24px;padding:26px;margin-bottom:24px;box-shadow:var(--shadow)}
+.elder-task-box h3{font-size:24px;margin-bottom:12px}
+.big-btn-voice{min-height:58px;font-size:19px;width:100%;margin-bottom:12px}
+
+/* ---------- নেভিগেশন ---------- */
+nav{position:sticky;top:12px;z-index:20;margin:12px auto 0;max-width:1100px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px 8px 18px;border:1px solid var(--line);border-radius:999px;background:var(--surf);box-shadow:var(--shadow)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px}
+.logo b{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--coral),var(--gold));color:#17233F;font-size:16px}
+.links{display:flex;gap:24px;color:var(--mute);font-weight:500}
+.links a:hover{color:var(--ink)}
+.row{display:flex;align-items:center;gap:8px}
+.uname{color:var(--mute);font-size:15px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.abadge{margin-left:6px;padding:3px 12px;border-radius:999px;background:rgba(255,122,89,.16);color:var(--coral);font-size:13px;font-weight:700}
+
+/* ---------- বাটন ---------- */
+.btn{min-height:50px;padding:0 24px;border-radius:999px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-1px)}.btn:active{transform:scale(.98)}
+.btn.main{background:linear-gradient(135deg,var(--coral),var(--coral2));color:#fff;box-shadow:0 10px 24px -12px rgba(255,122,89,.8)}
+.btn.line{border:1px solid var(--line);background:var(--surf2)}
+.btn.ok{background:var(--teal);color:#06302B}
+.btn.bad{background:rgba(239,111,123,.14);color:var(--rose);border:1px solid rgba(239,111,123,.4)}
+.btn.sm{min-height:42px;padding:0 18px;font-size:16px}
+.btn.full{width:100%;margin-top:8px}
+.btn:disabled{opacity:.6;cursor:wait}
+.icon{position:relative;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surf2);display:grid;place-items:center;font-size:18px}
+.bell i{position:absolute;top:-5px;right:-5px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--rose);color:#fff;font:700 12px/20px 'Hind Siliguri',sans-serif;font-style:normal;text-align:center}
+.bell i[hidden]{display:none}
+
+/* ---------- হোম ---------- */
+.hero{text-align:center;padding:84px 0 56px}
+.pill{display:inline-flex;gap:10px;align-items:center;padding:7px 16px;border:1px solid var(--line);border-radius:999px;background:var(--surf);font-size:15px;color:var(--mute)}
+.pill span{width:9px;height:9px;border-radius:50%;background:var(--teal);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 var(--teal)}70%{box-shadow:0 0 0 10px transparent}}
+h1{font-size:clamp(42px,7vw,88px);font-weight:800;margin:22px 0 16px}
+h1 em{font-style:normal;background:linear-gradient(100deg,var(--gold),var(--coral) 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:560px;margin:auto;color:var(--mute);font-size:20px}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;justify-content:center}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:44px auto 0;max-width:860px}
+.trust div{padding:18px 20px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surf);text-align:left}
+.trust b{display:block;font:800 19px 'Bricolage Grotesque','Hind Siliguri',sans-serif;margin-bottom:4px}
+.trust span{color:var(--mute);font-size:16px;line-height:1.5}
+.load{opacity:0;transform:translateY(18px);animation:up .7s cubic-bezier(.2,.8,.2,1) forwards}
+.load:nth-child(2){animation-delay:.08s}.load:nth-child(3){animation-delay:.16s}.load:nth-child(4){animation-delay:.24s}.load:nth-child(5){animation-delay:.32s}
+.marq{border-block:1px solid var(--line);overflow:hidden;padding:16px 0;background:var(--surf)}
+.marq div{display:flex;gap:56px;width:max-content;animation:slide 30s linear infinite;font:800 26px 'Bricolage Grotesque','Hind Siliguri';color:var(--mute)}
+.marq span::after{content:"✦";margin-left:56px;color:var(--coral)}
+@keyframes slide{to{transform:translateX(-50%)}}
+section{padding:92px 0 0}
+.head{max-width:640px;margin-bottom:32px}
+h2{font-size:clamp(28px,4vw,48px);font-weight:800}
+.head p{color:var(--mute);margin-top:12px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.step{position:relative;padding:26px 22px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surf);transition:transform .25s,border-color .25s;overflow:hidden}
+.step:hover{transform:translateY(-4px);border-color:var(--coral)}
+.step::before{counter-increment:s;content:counter(s);position:absolute;right:16px;top:-6px;font:800 100px 'Bricolage Grotesque';color:var(--ink);opacity:.05}
+.step .em{display:grid;place-items:center;width:50px;height:50px;border-radius:15px;background:rgba(255,122,89,.15);margin-bottom:16px}
+.step .em svg{width:26px;height:26px;fill:none;stroke:var(--coral);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.step h3{font-size:21px;margin-bottom:8px}.step p{color:var(--mute);font-size:16px}
+.tabs{display:inline-flex;flex-wrap:wrap;gap:6px;padding:6px;border:1px solid var(--line);border-radius:999px;background:var(--surf)}
+.tab{min-height:44px;padding:0 22px;border-radius:999px;background:none;color:var(--mute);font-weight:700;transition:.2s}
+.tab.on{background:var(--ink);color:var(--bg)}
+.panel{display:none;margin-top:26px;grid-template-columns:1fr 1fr;gap:28px;padding:36px;border:1px solid var(--line);border-radius:28px;background:var(--surf)}
+.panel.on{display:grid;animation:up .35s both}
+.panel h3{font-size:32px;margin-bottom:10px}
+.panel ul{list-style:none;display:grid;gap:12px;padding:0}
+.panel li{display:flex;gap:12px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--surf2)}
+.panel li::before{content:"✓";color:var(--teal);font-weight:800}
+.areas{display:flex;flex-wrap:wrap;gap:12px}
+.area{min-height:50px;padding:0 24px;border-radius:999px;border:1px solid var(--line);background:var(--surf);font-weight:700;transition:.2s}
+.area:hover,.area.on{background:var(--coral);border-color:var(--coral);color:#fff}
+.find{margin-top:18px;color:var(--mute)}.find b{color:var(--gold)}.find a{text-decoration:underline;color:var(--coral)}
+.final{margin-top:92px;padding:64px 28px;border-radius:36px;text-align:center;background:linear-gradient(135deg,#FF7A59,#E5586A);color:#fff;box-shadow:var(--shadow)}
+.final h2{max-width:720px;margin:0 auto 12px}
+.final p{max-width:560px;margin:auto;opacity:.95}
+.final .btn{background:#fff;color:#17233F;margin-top:24px}
+footer{padding:46px 0;text-align:center;color:var(--mute);font-size:16px}
+
+/* ---------- কার্ড ও ফর্ম ---------- */
+.card{margin:48px 0 32px;padding:34px;border:1px solid var(--line);border-radius:28px;background:var(--surf);box-shadow:var(--shadow)}
+.card.center{text-align:center}
+.card h2{font-size:30px;margin-bottom:6px}
+.card form{margin-top:20px}
+.field{display:block;margin-bottom:16px;font-weight:500;font-size:17px}
+.field input,.field select,.field textarea{display:block;width:100%;min-height:52px;margin-top:6px;padding:0 16px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--surf2);color:var(--ink);font:inherit;transition:border-color .2s}
+.field textarea{min-height:96px;padding:12px 16px;resize:vertical}
+.field select option{background:var(--surf);color:var(--ink)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--coral)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.swap{margin-top:18px;text-align:center;color:var(--mute);font-size:16px}
+.swap a{color:var(--coral);font-weight:700}
+.rolepick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.rolepick.four{grid-template-columns:repeat(4,1fr)}
+.rolepick input{position:absolute;opacity:0}
+.rolepick span{display:block;min-height:80px;padding:14px;border:1.5px solid var(--line);border-radius:var(--r-md);background:var(--surf2);font-size:14px;color:var(--mute);transition:.2s;cursor:pointer}
+.rolepick b{display:block;font-size:18px;color:var(--ink)}
+.rolepick input:checked+span{border-color:var(--coral);background:rgba(255,122,89,.12)}
+.rolepick input:focus-visible+span{outline:3px solid var(--gold)}
+.helperbox{display:none;margin:6px 0 14px;padding:20px;border:1.5px dashed var(--line);border-radius:var(--r-lg)}
+.helperbox.on{display:block}
+.helperbox h3{font-size:19px;margin-bottom:4px}
+.helperbox .mute{font-size:15px;margin-bottom:14px}
+.drop{display:grid;place-items:center;position:relative;min-height:120px;border:1.5px dashed var(--mute);border-radius:var(--r-md);cursor:pointer;overflow:hidden;text-align:center;font-size:15px;color:var(--mute);padding:10px;transition:border-color .2s}
+.drop:hover{border-color:var(--coral)}
+.drop img{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.drop.has img{display:block}.drop.has span{display:none}
+
+/* ---------- ব্যাজ ---------- */
+.badge{display:inline-block;padding:4px 14px;border-radius:999px;font-size:14px;font-weight:700}
+.badge.pending{background:rgba(242,193,78,.16);color:var(--gold)}
+.badge.approved,.badge.completed{background:rgba(52,201,181,.16);color:var(--teal)}
+.badge.rejected{background:rgba(239,111,123,.16);color:var(--rose)}
+.badge.accepted{background:rgba(125,180,250,.16);color:var(--blue)}
+.badge.on_the_way{background:rgba(255,122,89,.16);color:var(--coral)}
+.badge.arrived{background:rgba(242,193,78,.16);color:var(--gold)}
+.badge.cancelled{background:rgba(166,177,202,.16);color:var(--mute)}
+[data-theme=light] .badge.pending,[data-theme=light] .badge.arrived{color:#9A6B00}
+[data-theme=light] .badge.approved,[data-theme=light] .badge.completed{color:#0B7F70}
+.bigicon{width:72px;height:72px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;font-size:32px;background:var(--surf2);border:1px solid var(--line)}
+.card.center p{margin:10px auto;max-width:440px;color:var(--mute)}
+.card.center .btn{margin:8px 4px 0}
+.reason{margin:14px auto;padding:14px 18px;border-radius:14px;background:rgba(239,111,123,.1);border:1px solid rgba(239,111,123,.3);color:var(--ink)!important}
+
+/* ---------- অ্যাডমিন ---------- */
+.astats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.astats div{padding:18px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surf)}
+.astats b{display:block;font:800 34px 'Bricolage Grotesque','Hind Siliguri';line-height:1.2}
+.astats span{color:var(--mute);font-size:15px}
+.alist{display:grid;gap:14px;margin:24px 0 80px}
+.acard{display:grid;grid-template-columns:1fr auto;gap:20px;padding:22px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surf)}
+.acard h3{font-size:21px;margin-bottom:4px}
+.acard .meta{color:var(--mute);font-size:15px;display:flex;flex-wrap:wrap;gap:6px 18px}
+.thumbs{display:flex;gap:10px;margin-top:14px}
+.thumbs img{width:128px;height:84px;object-fit:cover;border-radius:var(--r-sm);border:1px solid var(--line);cursor:zoom-in}
+.acts{display:flex;flex-direction:column;gap:10px;justify-content:center}
+.empty{padding:44px 20px;text-align:center;color:var(--mute);border:1.5px dashed var(--line);border-radius:var(--r-lg)}
+
+/* ---------- মডাল ও টোস্ট ---------- */
+.modal{position:fixed;inset:0;z-index:50;display:none;place-items:center;padding:20px;background:rgba(10,15,30,.6);backdrop-filter:blur(4px)}
+.modal.on{display:grid}
+.mbox{position:relative;width:100%;max-width:540px;max-height:90vh;overflow:auto;padding:28px;border-radius:var(--r-lg);background:var(--surf);border:1px solid var(--line)}
+.mbox img{width:100%;border-radius:var(--r-sm)}
+.mbox textarea{width:100%;min-height:96px;margin:12px 0;padding:14px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--surf2);color:var(--ink);font:inherit}
+.mx{position:absolute;top:12px;right:14px;width:36px;height:36px;border-radius:50%;background:var(--surf2);font-size:18px}
+.toast{position:fixed;left:50%;bottom:26px;z-index:60;transform:translate(-50%,120px);padding:13px 22px;border-radius:14px;background:var(--ink);color:var(--bg);font-weight:700;box-shadow:var(--shadow);transition:transform .3s;max-width:90vw}
+.toast.on{transform:translate(-50%,0)}.toast.err{background:var(--rose);color:#fff}
+.warnbar{position:sticky;top:0;z-index:100;padding:12px 18px;background:var(--gold);color:#17233F;text-align:center;font-weight:700;font-size:16px}
+
+/* ---------- ড্যাশবোর্ড ও কাজের কার্ড ---------- */
+.dash-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin:44px 0 22px}
+.dash-head h2{font-size:clamp(26px,3.4vw,38px)}
+.dash-head p{color:var(--mute);margin-top:6px}
+.sec{font-size:22px;margin:32px 0 14px}
+.tcard{padding:22px;margin-bottom:14px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surf)}
+.th{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.th b{font-size:19px}
+.who{margin:10px 0;font-size:17px;line-height:1.7}
+.plink{color:var(--coral);font-weight:700;text-decoration:underline}
+.stp{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);padding:0;margin:16px 0;text-align:center;font-size:14px;color:var(--mute)}
+.stp li{position:relative}
+.stp li::before{content:"";position:absolute;top:15px;left:-50%;width:100%;height:3px;background:var(--line)}
+.stp li:first-child::before{display:none}
+.stp li.on::before{background:var(--coral)}
+.stp i{position:relative;z-index:1;display:grid;place-items:center;width:32px;height:32px;margin:0 auto 4px;border-radius:50%;background:var(--surf);border:3px solid var(--line);font-style:normal;font-weight:700}
+.stp li.on{color:var(--ink)}.stp li.on i{background:var(--coral);border-color:var(--coral);color:#fff}
+.pinbox{margin:14px 0;padding:14px;border-radius:var(--r-md);background:#26345A;color:#fff;text-align:center}
+.pinbox small{display:block;color:#B9C3DD}
+.pinbox b{font:800 38px 'Bricolage Grotesque';letter-spacing:.35em;color:var(--gold);padding-left:.35em}
+.bill2{margin:12px 0;font-size:17px}
+.bill2 div{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--line)}
+.bill2 .tot{border:0;font:800 22px 'Bricolage Grotesque','Hind Siliguri';padding-top:10px}
+.acts2{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+.inl{display:flex;gap:10px;margin-top:12px}
+.inl input,.bigin{flex:1;min-height:48px;padding:0 14px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--surf2);color:var(--ink);font:inherit}
+.bigin{display:block;width:100%;margin-top:12px;font:800 28px 'Bricolage Grotesque'}
+.chips{display:flex;gap:10px}
+.chips button{flex:1;min-height:50px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--surf2);font-weight:700;transition:.2s}
+.chips button:hover{border-color:var(--coral);color:var(--coral)}
+.stars button{font-size:26px;color:var(--mute)}.stars button.on{color:var(--gold);border-color:var(--gold)}
+.voicebar{display:flex;flex-wrap:wrap;gap:10px;margin:-4px 0 12px}
+audio{display:block;width:100%;margin:10px 0}
+audio[hidden]{display:none}
+
+/* ---------- নোটিফিকেশন ---------- */
+.nlist{display:grid;gap:8px;margin-top:6px}
+.nitem{padding:12px 14px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surf2)}
+.nitem.unread{border-color:var(--coral);background:rgba(255,122,89,.1)}
+.nitem b{display:block;font-size:16px}
+.nitem p{color:var(--mute);font-size:15px;line-height:1.5}
+.nitem small{color:var(--mute);font-size:13px}
+
+/* ---------- সহায়কের প্রোফাইল ---------- */
+.pf{margin:28px 0 80px}
+.back{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-bottom:10px;background:none;color:var(--mute);font-weight:700}
+.back:hover{color:var(--ink)}
+.pf-top{display:flex;gap:22px;align-items:center;flex-wrap:wrap;padding:26px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surf)}
+.pf-av{width:96px;height:96px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:linear-gradient(135deg,var(--coral),var(--gold));color:#17233F;font:800 38px 'Bricolage Grotesque','Hind Siliguri';flex:none}
+.pf-av img{width:100%;height:100%;object-fit:cover}
+.pf-info{flex:1;min-width:200px}
+.pf-info h2{font-size:28px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pf-sub{color:var(--mute);font-size:16px;margin-top:4px}
+.pf-rate{margin-top:6px;font-weight:700}
+.pf-rate i{font-style:normal;color:var(--gold);letter-spacing:2px;margin-right:6px}
+.pf-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}
+.pf-stats div{padding:16px;text-align:center;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surf)}
+.pf-stats b{display:block;font:800 28px 'Bricolage Grotesque','Hind Siliguri';line-height:1.2}
+.pf-stats span{color:var(--mute);font-size:14px}
+.pf-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:start}
+.pf-card{padding:22px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surf);margin-bottom:16px}
+.pf-card h3{font-size:18px;margin-bottom:12px}
+.chip{display:inline-block;margin:0 6px 6px 0;padding:5px 14px;border-radius:999px;background:var(--surf2);font-size:15px;font-weight:500}
+.dist{display:grid;grid-template-columns:34px 1fr 30px;gap:10px;align-items:center;font-size:14px;margin:6px 0;color:var(--mute)}
+.bar{height:8px;border-radius:6px;background:var(--surf2);overflow:hidden}.bar i{display:block;height:100%;background:var(--gold)}
+.rev{padding:14px 0;border-bottom:1px solid var(--line)}.rev:last-child{border:0;padding-bottom:0}
+.rev .st{color:var(--gold);letter-spacing:2px}
+.vrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:16px}
+.vrow:last-child{border:0}
+
+/* ---------- রেসপনসিভ ---------- */
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}.links{display:none}.panel{grid-template-columns:1fr}.hero{padding-top:56px}.pf-grid{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .steps,.trust,.astats,.two,.rolepick{grid-template-columns:1fr}
+  .rolepick.four{grid-template-columns:1fr 1fr}
+  .panel,.card{padding:22px}.acard{grid-template-columns:1fr}.acts{flex-direction:row}
+  .uname{display:none}.inl{flex-direction:column}.pf-stats{gap:8px}.pf-stats b{font-size:22px}
+}
+/* ---------- কাস্টম পেমেন্ট কার্ড ---------- */
+.pay-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+.pay-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 96px;
+  padding: 14px 10px;
+  border: 2px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surf2);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.pay-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.pay-card img.pay-logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.pay-card .pay-icon {
+  font-size: 30px;
+  line-height: 1;
+}
+.pay-card b {
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.pay-card small {
+  font-size: 13px;
+  color: var(--mute);
+}
+.pay-card:hover {
+  border-color: var(--coral);
+}
+/* সিলেক্ট করা কার্ডের হাইলাইট */
+.pay-card.active {
+  border-color: #d8729e;
+  background: rgba(226, 19, 110, 0.12);
+}
+.pay-card.cod-active {
+  border-color: var(--teal);
+  background: rgba(52, 201, 181, 0.12);
+}
+
+@media (max-width: 700px) {
+  .pay-methods {
+    grid-template-columns: 1fr;
+  }
+  .pay-card {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 12px 18px;
+    gap: 14px;
+    text-align: left;
+    min-height: auto;
+  }
+}

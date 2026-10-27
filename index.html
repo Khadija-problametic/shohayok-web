@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shohayok (সহায়ক) — প্রতিবেশীর হাতে আপনার কাজ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Hind+Siliguri:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+addEventListener('error', function(e) {
+  if (!e.message || e.message === 'undefined') return;
+  var t = e.target;
+  var m = (t && t.tagName === 'SCRIPT') 
+    ? 'ফাইল লোড হয়নি: ' + (t.getAttribute('src') || '') 
+    : 'JS ত্রুটি: ' + e.message + (e.filename ? ' (' + e.filename.split('/').pop() + ':' + e.lineno + ')' : '');
+  var d = document.createElement('div');
+  d.style.cssText = 'position:sticky;top:0;z-index:999;background:#EF6F7B;color:#fff;padding:10px 16px;font:15px/1.5 sans-serif;text-align:center';
+  d.textContent = m;
+  (document.body || document.documentElement).prepend(d);
+}, true);
+</script>
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+<div class="aurora"><i></i><i></i><i></i></div>
+
+<!-- ============ নেভিগেশন ============ -->
+<nav>
+  <a class="logo" href="#" data-go="home"><b>সহ</b> Shohayok</a>
+  <div class="links">
+    <a href="#how" data-sec="how">কীভাবে কাজ করে</a>
+    <a href="#roles" data-sec="roles">কার জন্য</a>
+    <a href="#areas" data-sec="areas">এলাকা</a>
+  </div>
+  <div class="row" id="navAuth"></div>
+</nav>
+
+<!-- ============ হোম ============ -->
+<div class="view on" id="v-home">
+  <main class="wrap">
+    <div class="hero">
+      <p class="pill load"><span></span> ঢাকার ৬টি এলাকায় সেবা</p>
+      <h1 class="load">কাজ হোক<br><em>প্রতিবেশীর হাতে</em></h1>
+      <p class="lead load">ওষুধ, বাজার বা হাসপাতালে সঙ্গী। আপনার এলাকার যাচাই করা সহায়ক কাজটি করে দেন, আর টাকা দেন কাজ শেষ হওয়ার পর।</p>
+      <div class="cta load">
+        <a class="btn main" href="#" data-go="register" data-role="elderly">সহায়তা চাই</a>
+        <a class="btn line" href="#" data-go="register" data-role="helper">সহায়ক হতে চাই</a>
+      </div>
+      <div class="trust load">
+        <div><b>NID যাচাই</b><span>প্রতিটি সহায়কের পরিচয় নিশ্চিত</span></div>
+        <div><b>৪ সংখ্যার পিন</b><span>দরজায় পিন মিললে তবেই কাজ শেষ</span></div>
+        <div><b>কাজ শেষে পরিশোধ</b><span>বিকাশ বা নগদে</span></div>
+      </div>
+    </div>
+  </main>
+
+  <div class="marq"><div id="marq"></div></div>
+
+  <main class="wrap">
+    <section id="how">
+      <div class="head"><h2>চার ধাপে কাজ শেষ</h2><p>জটিল কিছু নেই। বড় বাটন, সহজ ভাষা, আর প্রতিটি ধাপে নিরাপত্তা।</p></div>
+      <div class="steps">
+        <div class="step"><span class="em"><svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span><h3>অনুরোধ করুন</h3><p>লিখে অথবা ভয়েস মেসেজে আপনার প্রয়োজন জানান।</p></div>
+        <div class="step"><span class="em"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><h3>সহায়ক আসেন</h3><p>আপনার এলাকার NID-যাচাই করা সহায়ক কাজ নেন।</p></div>
+        <div class="step"><span class="em"><svg viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><h3>পিন মিলিয়ে নিন</h3><p>দরজায় ৪ সংখ্যার পিন মিললে তবেই কাজ সম্পন্ন।</p></div>
+        <div class="step"><span class="em"><svg viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></span><h3>কাজ শেষে পরিশোধ</h3><p>কাজ শেষের পর বিকাশ বা নগদে টাকা দিন।</p></div>
+      </div>
+    </section>
+
+    <section id="roles">
+      <div class="head"><h2>আপনি কে?</h2></div>
+      <div class="tabs" role="tablist">
+        <button class="tab on" data-p="0">প্রবীণ</button><button class="tab" data-p="1">সহায়ক</button><button class="tab" data-p="2">অভিভাবক</button>
+      </div>
+      <div class="panel on"><div><h3>চাইলেই সাহায্য</h3><p class="mute">একবার বললেই হবে। বাকিটা সহায়ক সামলাবেন।</p></div>
+        <ul><li>বড় অক্ষর ও সহজ বাটনে সহজ ব্যবহার</li><li>ভয়েস নোটে কাজ বলুন</li><li>কাজ শেষে নিশ্চিন্তে টাকা দিন</li></ul></div>
+      <div class="panel"><div><h3>প্রতিবেশীর উপকার, নিজের আয়</h3><p class="mute">নিজের এলাকার কাজ বেছে নিন।</p></div>
+        <ul><li>নির্ধারিত ফি আর বখশিশ</li><li>দোকানের খরচ ফেরত পাবেন</li><li>NID যাচাইয়ের পর অ্যাডমিন অনুমোদন দিলে একাউন্ট চালু</li></ul></div>
+      <div class="panel"><div><h3>দূর থেকেও পাশে</h3><p class="mute">বাবা-মায়ের প্রতিটি কাজ আপনার চোখের সামনে।</p></div>
+        <ul><li>কাজের অবস্থা সরাসরি দেখুন</li><li>দূর থেকে বিকাশে বিল পরিশোধ করুন</li><li>ফোন নম্বর দিয়ে প্রবীণকে যুক্ত করুন</li></ul></div>
+    </section>
+
+    <section id="areas">
+      <div class="head"><h2>আপনার এলাকায়ই আছি</h2></div>
+      <div class="areas" id="areaList"></div>
+      <p class="find" id="find">এলাকা বেছে নিন</p>
+    </section>
+
+    <div class="final">
+      <h2>আপনার প্রথম কাজটি পোস্ট করুন</h2>
+      <p>সহায়ক যাচাইকৃত, দরজায় পিন মিলিয়ে নেওয়া হয়, আর টাকা দিতে হয় কাজ শেষ হওয়ার পর।</p>
+      <a class="btn" href="#" data-go="register">সাইন আপ করুন</a>
+    </div>
+  </main>
+  <footer>Shohayok (সহায়ক) · ঢাকার প্রবীণদের জন্য কমিউনিটি সেবা</footer>
+</div>
+
+<!-- ============ লগইন ============ -->
+<div class="view" id="v-login">
+  <main class="wrap narrow">
+    <div class="card">
+      <h2>লগইন</h2><p class="mute">আপনার মোবাইল নম্বর ও পাসওয়ার্ড দিন</p>
+      <form id="loginForm" novalidate>
+        <label class="field">মোবাইল নম্বর<input name="phone" type="tel" inputmode="tel" placeholder="01XXXXXXXXX" required></label>
+        <label class="field">পাসওয়ার্ড<input name="password" type="password" required></label>
+        <button class="btn main full" type="submit">লগইন করুন</button>
+      </form>
+      <p class="swap">একাউন্ট নেই? <a href="#" data-go="register">সাইন আপ করুন</a></p>
+    </div>
+  </main>
+</div>
+
+<!-- ============ সাইন আপ ============ -->
+<div class="view" id="v-register">
+  <main class="wrap narrow">
+    <div class="card">
+      <h2>নতুন একাউন্ট</h2><p class="mute">আপনি কীভাবে যুক্ত হতে চান?</p>
+      <form id="regForm" novalidate>
+        <div class="rolepick">
+          <label><input type="radio" name="role" value="elderly" checked><span><b>প্রবীণ</b>সহায়তা চাই</span></label>
+          <label><input type="radio" name="role" value="helper"><span><b>সহায়ক</b>সহায়তা করতে চাই</span></label>
+          <label><input type="radio" name="role" value="guardian"><span><b>অভিভাবক</b>পরিবারের সদস্য</span></label>
+        </div>
+        <label class="field">পুরো নাম<input name="name" required></label>
+        <div class="two">
+          <label class="field">মোবাইল নম্বর<input name="phone" type="tel" inputmode="tel" placeholder="01XXXXXXXXX" required></label>
+          <label class="field">এলাকা<select name="area" id="areaSel"></select></label>
+        </div>
+        <label class="field">পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)<input name="password" type="password" required></label>
+
+        <div id="helperBox" class="helperbox">
+          <h3>পরিচয় যাচাই (শুধু সহায়কদের জন্য)</h3>
+          <p class="mute">অ্যাডমিন আপনার NID দেখে অনুমোদন দিলে তবেই একাউন্ট চালু হবে।</p>
+          <label class="field">NID নম্বর<input name="nid_number" inputmode="numeric" placeholder="১০, ১৩ বা ১৭ সংখ্যা"></label>
+          <div class="two">
+            <label class="drop" id="dropFront"><input type="file" name="nid_front" accept="image/*" hidden><span>NID-এর সামনের ছবি</span><img alt=""></label>
+            <label class="drop" id="dropBack"><input type="file" name="nid_back" accept="image/*" hidden><span>NID-এর পেছনের ছবি</span><img alt=""></label>
+          </div>
+        </div>
+        <button class="btn main full" type="submit">সাইন আপ করুন</button>
+      </form>
+      <p class="swap">আগে থেকেই একাউন্ট আছে? <a href="#" data-go="login">লগইন করুন</a></p>
+    </div>
+  </main>
+</div>
+
+<!-- ============ সহায়কের অনুমোদনের অপেক্ষা / প্রত্যাখ্যান ============ -->
+<div class="view" id="v-pending">
+  <main class="wrap narrow"><div class="card center" id="pendingBox"></div></main>
+</div>
+
+<!-- ============ ব্যবহারকারীর ড্যাশবোর্ড ============ -->
+<div class="view" id="v-dash">
+  <main class="wrap"><div id="dashBox"></div></main>
+</div>
+
+<!-- ============ সহায়কের প্রোফাইল ============ -->
+<div class="view" id="v-profile">
+  <main class="wrap"><div id="profileBox"></div></main>
+</div>
+
+<div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
+<div class="toast" id="toast"></div>
+<script src="tasks.js?v=3" defer></script>
+<script src="script.js?v=3" defer></script>
+</body>
+</html>
