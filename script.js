@@ -161,3 +161,14 @@ $$('.area').forEach(btn => btn.addEventListener('click', () => {
 route();
 
 if (location.protocol === 'file:') document.body.insertAdjacentHTML('afterbegin', '<div class="warnbar">⚠ পেজটি ফাইল হিসেবে খোলা হয়েছে, তাই সার্ভারের সঙ্গে যুক্ত হবে না। XAMPP চালু করে <b>http://localhost:8080/shohayok/</b> ঠিকানায় খুলুন (পোর্ট আলাদা হলে সেটি দিন)।</div>');
+// Homepage Dynamic Service Showcase Slider
+(() => {
+  const slides = document.querySelectorAll('#homeSlider .showcase-slide');
+  if (!slides.length) return;
+  let curr = 0;
+  setInterval(() => {
+    slides[curr].classList.remove('active');
+    curr = (curr + 1) % slides.length;
+    slides[curr].classList.add('active');
+  }, 4000);
+})();

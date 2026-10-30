@@ -18,9 +18,10 @@ $isReq    = $uid === (int)$t['requester_id'];
 $isHelper = $t['helper_id'] !== null && $uid === (int)$t['helper_id'];
 $isAdmin  = $u['role'] === 'admin';
 $isGuardian = false;                                         // অনুমোদিত অভিভাবক প্রবীণের হয়ে বিকাশে বিল দিতে পারবেন
+// অভিভাবক প্রবীণের হয়ে অথবা সরাসরি অন-বিহাফ অর্ডারে বিল দিতে পারবেন
 if ($u['role'] === 'guardian') {
-    $g = $pdo->prepare("SELECT 1 FROM guardian_links WHERE guardian_id = ? AND elderly_id = ? AND status = 'approved'");
-    $g->execute([$uid, $t['requester_id']]);
+    $g = $pdo->prepare("SELECT 1 FROM guardian_links WHERE guardian_id = ? AND elderly_id IN (?, ?) AND status = 'approved'");
+    $g->execute([$uid, $t['requester_id'], (int)($t['on_behalf_of'] ?? 0)]);
     $isGuardian = (bool)$g->fetchColumn();
 }
 $st  = $t['status'];

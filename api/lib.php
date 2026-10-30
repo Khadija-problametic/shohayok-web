@@ -1,11 +1,15 @@
 <?php
 require __DIR__ . '/config.php';
 
-const TASK_SQL = "SELECT t.*, r.name AS requester_name, r.phone AS requester_phone,
+const TASK_SQL = "SELECT t.*, 
+    COALESCE(e.name, r.name) AS requester_name, 
+    COALESCE(e.phone, r.phone) AS requester_phone,
     h.name AS helper_name, h.phone AS helper_phone, hp.total_rating AS helper_rating,
     (SELECT ROUND(AVG(v2.rating), 1) FROM reviews v2 WHERE v2.reviewee_id = t.requester_id) AS requester_rating,
     EXISTS(SELECT 1 FROM reviews v WHERE v.task_id = t.id AND v.reviewer_id = t.requester_id) AS reviewed
-    FROM tasks t JOIN users r ON r.id = t.requester_id
+    FROM tasks t 
+    JOIN users r ON r.id = t.requester_id
+    LEFT JOIN users e ON e.id = t.on_behalf_of
     LEFT JOIN users h ON h.id = t.helper_id
     LEFT JOIN helper_profiles hp ON hp.user_id = t.helper_id";
 
@@ -13,6 +17,12 @@ function need_login(): array {
     $u = current_user();
     if (!$u) fail('আগে লগইন করুন', 401);
     return $u;
+}
+
+function user_by_phone(string $phone): ?array {
+    $s = db()->prepare('SELECT id, name, phone, role, area, blood_group, emergency_contact, medical_notes, address FROM users WHERE phone IN (?, ?) LIMIT 1');
+    $s->execute([$phone, '+88' . $phone]);
+    return $s->fetch() ?: null;
 }
 
 function task_by_id(int $id): ?array {
@@ -37,6 +47,9 @@ function notify_guardians(int $elderlyId, string $title, string $body = '', ?int
 
 function notify_requester_side(array $t, string $title, string $body = ''): void {
     notify((int)$t['requester_id'], $title, $body, (int)$t['id']);
+    if (!empty($t['on_behalf_of'])) {
+        notify((int)$t['on_behalf_of'], $title, $body, (int)$t['id']);
+    }
     notify_guardians((int)$t['requester_id'], $title, $body, (int)$t['id']);
 }
 
@@ -44,7 +57,7 @@ function notify_admins(string $title, string $body = '', ?int $task = null): voi
     foreach (db()->query("SELECT id FROM users WHERE role = 'admin'")->fetchAll(PDO::FETCH_COLUMN) as $a) notify((int)$a, $title, $body, $task);
 }
 
-/* ---------- কাজের তথ্য (ভূমিকা অনুযায়ী ও সার্ভার সাইড লেজার হিসাব) ---------- */
+/* ---------- কাজের তথ্য ---------- */
 function shape(array $t, array $u): array {
     $adminFee = (float)($t['admin_fee'] ?? round(((float)$t['base_fee'] * PLATFORM_COMMISSION_RATE), 2));
     $helperFee = (float)($t['helper_fee'] ?? round(((float)$t['base_fee'] * (1 - PLATFORM_COMMISSION_RATE)), 2));
@@ -66,7 +79,7 @@ function shape(array $t, array $u): array {
         'created_at' => date('c', strtotime($t['created_at'])),
     ];
     $uid = (int)$u['id'];
-    $isReq = $uid === (int)$t['requester_id'];
+    $isReq = $uid === (int)$t['requester_id'] || (!empty($t['on_behalf_of']) && $uid === (int)$t['on_behalf_of']);
     $isHelper = $t['helper_id'] !== null && $uid === (int)$t['helper_id'];
     $isAdmin = $u['role'] === 'admin';
     $helperInfo = ['helper_id' => $t['helper_id'] !== null ? (int)$t['helper_id'] : null, 'helper_name' => $t['helper_name'],
@@ -75,7 +88,7 @@ function shape(array $t, array $u): array {
     if ($isReq) {
         $o += ['pickup' => $t['pickup_address'], 'delivery' => $t['delivery_address'], 'handshake_pin' => $t['handshake_pin'],
                'cancel_reason' => $t['cancel_reason'], 'dispute_reason' => $t['dispute_reason'] ?? null,
-               'can_review' => $t['status'] === 'completed' && !(int)$t['reviewed']] + $helperInfo;
+               'can_review' => $t['status'] === 'completed' && !(int)($t['reviewed'] ?? 0)] + $helperInfo;
     }
     if ($isHelper || $isAdmin) {
         $o += ['pickup' => $t['pickup_address'], 'delivery' => $t['delivery_address'],
