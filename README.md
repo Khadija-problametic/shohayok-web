@@ -42,3 +42,6 @@
 ```bash
 cd C:/xampp/htdocs/
 git clone [https://github.com/YOUR_USERNAME/shohayok.git](https://github.com/YOUR_USERNAME/shohayok.git)
+# 🧡 Shohayok (সহায়ক) — প্রতিবেশীর হাতে আপনার কাজ
+
+> 🌐 **লাইভ ওয়েবসাইট ভিজিট করুন:** [shohayok-care.infinityfreeapp.com](http://shohayok-care.infinityfreeapp.com/)
